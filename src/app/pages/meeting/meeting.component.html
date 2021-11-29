@@ -1,0 +1,40 @@
+<h1>Gestion des rendez vous</h1>
+
+<nz-card style="width:100%;" nzTitle="Ajouter un rendez vous">
+    <form (ngSubmit)="onSubmit(meetingForm)" #meetingForm="ngForm">
+        <div class="form-group">
+            <input type="text" required class="form-control custom-input" id="customer" [(ngModel)]="model.customer"
+                name="customer" placeholder="Nom du client *" #customer="ngModel">
+            <div [hidden]="customer.valid || customer.pristine" class="alert alert-danger">
+                Le nom du client est requis
+            </div>
+        </div>
+        <div class="form-group">
+            <input required type="text" class="form-control custom-input" id="email" [(ngModel)]="model.email"
+                name="email" placeholder="email du client *" #email="ngModel">
+            <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                l'email est requis
+            </div>
+        </div>
+        <div class="form-group">
+            <input required type="text" class="form-control custom-input" id="phone" [(ngModel)]="model.phoneNumber"
+                name="phone" placeholder="téléphone du client *" #phoneNumber="ngModel">
+            <div [hidden]="phoneNumber.valid || phoneNumber.pristine" class="alert alert-danger">
+                Le numéro de téléphone est requis
+            </div>
+        </div>
+        <div class="form-group">
+            <textarea required cols="6" class="form-control custom-input" id="customer" [(ngModel)]="model.reason"
+                name="reason" placeholder="Raison de la visite *" #reason="ngModel"></textarea>
+            <div [hidden]="reason.valid || reason.pristine" class="alert alert-danger">
+                Veuillez indiquer la raison du rendez vous
+            </div>
+        </div>
+        <div class="form-group">
+            <input required type="date" class="form-control custom-input" id="customer" [(ngModel)]="model.date"
+                name="date" placeholder="Date de la visite">
+        </div>
+        <button [disabled]="!meetingForm.form.valid" type="submit" nz-button nzType="primary">Enregistrer</button>
+    </form>
+
+</nz-card>

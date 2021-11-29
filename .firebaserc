@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ecv-angular": {
+      "hosting": {
+        "ecv-mediko": [
+          "ecv-angular"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ecv-angular"
+  }
+}
