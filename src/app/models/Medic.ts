@@ -1,4 +1,4 @@
 export class Medic {
-    constructor(public name: string, public firstame: string, public ocation: string, public specializaton: string) {
+    constructor(public name: string, public firstame: string, public location: string, public specialization: string) {
     }
 }

@@ -13,8 +13,8 @@ export class MedicComponent {
   newMedic: Medic = {
     name: '',
     firstame: '',
-    ocation: '',
-    specializaton: ''
+    location: '',
+    specialization: ''
   }
 
   constructor(private medicCommand: MedicCommand) {
