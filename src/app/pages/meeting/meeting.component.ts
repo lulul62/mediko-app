@@ -1,26 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Meeting } from 'src/app/models/Meeting';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { NgForm } from '@angular/forms';
+import MeetingCommand from 'src/app/services/command/meeting.command';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './meeting.component.html',
   styleUrls: ['./meeting.component.scss']
 })
-export class MeetingComponent implements OnInit {
+export class MeetingComponent {
 
-  constructor(private afs: AngularFirestore) { }
+  constructor(private meetingCommand: MeetingCommand) { }
 
-  model = new Meeting('', '', new Date(), '', '');
+  meeting: Meeting = {
+    customer: '',
+    email: '',
+    date: new Date(),
+    reason: '',
+    phoneNumber: ''
+  };
 
-  onSubmit(meetingForm: NgForm) {
-    this.afs.collection('meeting').add(JSON.parse(JSON.stringify(this.model)))
-    meetingForm.reset()
+  addNewMeeting(meetingForm: NgForm) {
+    try {
+      this.meetingCommand.addNewMeetingToDatabase(this.meeting as Meeting)
+      this.cleanMeetingForm(meetingForm)
+    }
+    catch (error) {
+      return error
+    }
+
   }
 
-  ngOnInit() {
-
+  cleanMeetingForm(meetingForm: NgForm): void {
+    return meetingForm.reset()
   }
-
 }
