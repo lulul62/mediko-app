@@ -5,7 +5,7 @@
         <form (ngSubmit)="addNewCustomer(customerForm)" #customerForm="ngForm">
             <div class="form-group">
                 <input minlength="2" maxlength="25" type="text" required class="form-control custom-input" id="name"
-                    name="name" [(ngModel)]="customer.name" placeholder="Nom du patient *" #name="ngModel">
+                    name="name" [(ngModel)]="newCustomer.name" placeholder="Nom du patient *" #name="ngModel">
                 <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
                     Le nom du patient est requis
                 </div>
@@ -13,8 +13,8 @@
 
             <div class="form-group">
                 <input minlength="2" maxlength="25" type="text" required class="form-control custom-input"
-                    id="firstname" name="firstname" [(ngModel)]="customer.firstname" placeholder="Prénom du patient *"
-                    #firstname="ngModel">
+                    id="firstname" name="firstname" [(ngModel)]="newCustomer.firstname"
+                    placeholder="Prénom du patient *" #firstname="ngModel">
                 <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
                     Le prénom du patient est requis
                 </div>
@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <input type="number" min="0" max="99" required class="form-control custom-input" id="age" name="age"
-                    [(ngModel)]="customer.age" placeholder="Age du patient *" #age="ngModel">
+                    [(ngModel)]="newCustomer.age" placeholder="Age du patient *" #age="ngModel">
                 <div [hidden]="age.valid || age.pristine" class="alert alert-danger">
                     Veuillez saisir un age valide
                 </div>
@@ -30,7 +30,7 @@
 
             <div class="form-group">
                 <input minlength="1" maxlength="30" type="text" required class="form-control custom-input" id="location"
-                    name="location" [(ngModel)]="customer.location" placeholder="Ville du patient *"
+                    name="location" [(ngModel)]="newCustomer.location" placeholder="Ville du patient *"
                     #location="ngModel">
                 <div [hidden]="location.valid || location.pristine" class="alert alert-danger">
                     Veuillez indiquer une ville
@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <select placeholder="Sexe du patient" required class="form-control custom-input" id="gender"
-                    name="gender" [(ngModel)]="customer.gender" placeholder="Sexe du patient *" #gender="ngModel">
+                    name="gender" [(ngModel)]="newCustomer.gender" placeholder="Sexe du patient *" #gender="ngModel">
                     <option>Homme</option>
                     <option>Femme</option>
                 </select>
@@ -50,7 +50,7 @@
 
             <div class="form-group">
                 <input maxlength="10" minlength="6" type="tel" required class="form-control custom-input" id="telephone"
-                    name="telephone" [(ngModel)]="customer.telephone" placeholder="Numéro de téléphone du patient *"
+                    name="telephone" [(ngModel)]="newCustomer.telephone" placeholder="Numéro de téléphone du patient *"
                     #telephone="ngModel">
                 <div [hidden]="telephone.valid || telephone.pristine" class="alert alert-danger">
                     Veuillez indiquer un numéro de téléphone
@@ -59,7 +59,7 @@
 
             <div class="form-group">
                 <input maxlength="50" type="email" required class="form-control custom-input" id="email" name="email"
-                    [(ngModel)]="customer.email" placeholder="Email du patient *" #email="ngModel">
+                    [(ngModel)]="newCustomer.email" placeholder="Email du patient *" #email="ngModel">
                 <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
                     Veuillez indiquer une adresse email de contact
                 </div>
