@@ -6,7 +6,7 @@ import { Medic } from "src/app/models/Medic";
     providedIn: 'root',
 })
 
-export default class MeetingCommand {
+export default class MedicCommand {
     constructor(private angularFirestore: AngularFirestore) { }
 
     addNewMedicToDatabase(newMedic: Medic) {

@@ -1,15 +1,37 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Medic } from 'src/app/models/Medic';
+import MedicCommand from 'src/app/services/command/medic.command';
 
 @Component({
-  selector: 'app-medic',
-  templateUrl: './medic.component.html',
-  styleUrls: ['./medic.component.scss']
+  selector: 'app-customer',
+  templateUrl: './customer.component.html',
+  styleUrls: ['./customer.component.scss']
 })
-export class MedicComponent implements OnInit {
+export class MedicComponent {
 
-  constructor() { }
+  newMedic: Medic = {
+    name: '',
+    firstame: '',
+    ocation: '',
+    specializaton: ''
+  }
 
-  ngOnInit(): void {
+  constructor(private medicCommand: MedicCommand) {
+  }
+
+  addNewMedic(medicForm: NgForm) {
+    try {
+      this.medicCommand.addNewMedicToDatabase(this.newMedic as Medic)
+      return this.cleanMedicForm(medicForm)
+    }
+    catch (error) {
+      return error
+    }
+  }
+
+  cleanMedicForm(medicForm: NgForm): void {
+    return medicForm.reset()
   }
 
 }
