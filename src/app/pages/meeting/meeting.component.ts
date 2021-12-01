@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Meeting } from 'src/app/models/Meeting';
 import { NgForm } from '@angular/forms';
 import MeetingCommand from 'src/app/services/command/meeting.command';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-welcome',
@@ -29,7 +28,6 @@ export class MeetingComponent {
     catch (error) {
       return error
     }
-
   }
 
   cleanMeetingForm(meetingForm: NgForm): void {
