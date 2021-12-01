@@ -1,7 +1,7 @@
 <h1>Gestion des rendez vous</h1>
 
 <nz-card style="width:100%;" nzTitle="Ajouter un rendez vous">
-    <form (ngSubmit)="onSubmit(meetingForm)" #meetingForm="ngForm">
+    <form (ngSubmit)="addNewMeeting(meetingForm)" #meetingForm="ngForm">
         <div class="form-group">
             <input type="text" required class="form-control custom-input" id="customer" [(ngModel)]="model.customer"
                 name="customer" placeholder="Nom du client *" #customer="ngModel">

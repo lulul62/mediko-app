@@ -2,7 +2,7 @@
     <h1>Gestion des patients</h1>
 
     <nz-card style="width:100%;" nzTitle="Ajouter un patient">
-        <form (ngSubmit)="onSubmit(customerForm)" #customerForm="ngForm">
+        <form (ngSubmit)="addNewCustomer(customerForm)" #customerForm="ngForm">
             <div class="form-group">
                 <input minlength="2" maxlength="25" type="text" required class="form-control custom-input" id="name"
                     name="name" [(ngModel)]="customer.name" placeholder="Nom du patient *" #name="ngModel">

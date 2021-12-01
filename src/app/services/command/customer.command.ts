@@ -9,7 +9,7 @@ import { Customer } from "src/app/models/Customer";
 export default class CustomerCommand {
     constructor(private angularFirestore: AngularFirestore) { }
 
-    addNewMedicToDatabase(newCustomer: Customer) {
+    addNewCustomerToDatabase(newCustomer: Customer) {
         return this.angularFirestore.collection('medics').add(JSON.parse(JSON.stringify(newCustomer as Customer)))
             .then(success => success)
             .catch(httpError => {

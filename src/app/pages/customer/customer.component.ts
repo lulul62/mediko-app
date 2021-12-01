@@ -1,36 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Customer } from 'src/app/models/Customer';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import CustomerCommand from 'src/app/services/command/customer.command';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.scss']
 })
-export class CustomerComponent implements OnInit {
+export class CustomerComponent {
 
-  customer: Customer = new Customer('', '', '', '', '', '', '')
-  customers$: any;
-  constructor(firestore: Firestore, private afs: AngularFirestore) {
-
-    const customerCollection = collection(firestore, 'customers');
-    this.customers$ = collectionData(customerCollection)
+  newCustomer: Customer = {
+    name: '',
+    firstname: '',
+    age: '',
+    location: '',
+    gender: '',
+    telephone: '',
+    email: ''
   }
 
-  onSubmit(form: NgForm) {
-    this.addNewCustomer()
-
+  constructor(private customerCommand: CustomerCommand) {
   }
 
-  addNewCustomer() {
-    this.afs.collection('customers').add(JSON.parse(JSON.stringify(this.customer)))
+  addNewCustomer(customerForm: NgForm) {
+    try {
+      this.customerCommand.addNewCustomerToDatabase(this.newCustomer as Customer)
+      return this.cleanCustomerForm(customerForm)
+    }
+    catch (error) {
+      return error
+    }
   }
 
-  ngOnInit(): void {
-
+  cleanCustomerForm(meetingForm: NgForm): void {
+    return meetingForm.reset()
   }
 
 }
