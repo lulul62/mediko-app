@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Customer } from 'src/app/models/Customer';
 import CustomerCommand from 'src/app/services/command/customer.command';
-
+import CustomerNotificationHelper from '../../helpers/notifications/customer.notification';
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
@@ -20,12 +20,13 @@ export class CustomerComponent {
     email: ''
   }
 
-  constructor(private customerCommand: CustomerCommand) {
+  constructor(private customerCommand: CustomerCommand, private customerNotificationHelper: CustomerNotificationHelper) {
   }
 
   addNewCustomer(customerForm: NgForm) {
     try {
       this.customerCommand.addNewCustomerToDatabase(this.newCustomer as Customer)
+      this.customerNotificationHelper.addCustomerNotificationSuccess()
       return this.cleanCustomerForm(customerForm)
     }
     catch (error) {

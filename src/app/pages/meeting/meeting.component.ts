@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Meeting } from 'src/app/models/Meeting';
 import { NgForm } from '@angular/forms';
 import MeetingCommand from 'src/app/services/command/meeting.command';
+import MeetingNotificationHelper from 'src/app/helpers/notifications/meeting.notification';
 
 @Component({
   selector: 'app-welcome',
@@ -10,7 +11,7 @@ import MeetingCommand from 'src/app/services/command/meeting.command';
 })
 export class MeetingComponent {
 
-  constructor(private meetingCommand: MeetingCommand) { }
+  constructor(private meetingCommand: MeetingCommand, private meetingNotificationHelper: MeetingNotificationHelper) { }
 
   meeting: Meeting = {
     customer: '',
@@ -23,7 +24,8 @@ export class MeetingComponent {
   addNewMeeting(meetingForm: NgForm) {
     try {
       this.meetingCommand.addNewMeetingToDatabase(this.meeting as Meeting)
-      this.cleanMeetingForm(meetingForm)
+      this.meetingNotificationHelper.addMeetingNotificationSuccess();
+      this.cleanMeetingForm(meetingForm);
     }
     catch (error) {
       return error

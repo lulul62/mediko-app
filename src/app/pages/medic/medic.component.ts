@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import MedicNotificationHelper from 'src/app/helpers/notifications/medic.notification';
 import { Medic } from 'src/app/models/Medic';
 import MedicCommand from 'src/app/services/command/medic.command';
 
@@ -17,12 +18,13 @@ export class MedicComponent {
     specialization: ''
   }
 
-  constructor(private medicCommand: MedicCommand) {
+  constructor(private medicCommand: MedicCommand, private medicNotificationHelper: MedicNotificationHelper) {
   }
 
   addNewMedic(medicForm: NgForm) {
     try {
       this.medicCommand.addNewMedicToDatabase(this.newMedic as Medic)
+      this.medicNotificationHelper.addMedicNotificationSuccess();
       return this.cleanMedicForm(medicForm)
     }
     catch (error) {
