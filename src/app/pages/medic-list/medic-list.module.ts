@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { MedicListComponent } from './medic-list.component';
 import { MedicListRoutingModule } from './medic-list-routing.module';
 
+import { NzButtonModule } from 'ng-zorro-antd/button';
+
+import { NzCardModule } from 'ng-zorro-antd/card';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,6 +15,9 @@ import { MedicListRoutingModule } from './medic-list-routing.module';
   ],
   imports: [
     CommonModule,
+    NzButtonModule,
+    NzCardModule,
+    FormsModule,
     MedicListRoutingModule
   ]
 })

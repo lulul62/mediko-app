@@ -5,14 +5,14 @@ import MedicCommand from 'src/app/services/command/medic.command';
 
 @Component({
   selector: 'app-customer',
-  templateUrl: './customer.component.html',
-  styleUrls: ['./customer.component.scss']
+  templateUrl: './medic.component.html',
+  styleUrls: ['./medic.component.scss']
 })
 export class MedicComponent {
 
   newMedic: Medic = {
     name: '',
-    firstame: '',
+    firstname: '',
     location: '',
     specialization: ''
   }

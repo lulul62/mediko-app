@@ -5,7 +5,7 @@
         <form (ngSubmit)="addNewMedic(medicForm)" #medicForm="ngForm">
             <div class="form-group">
                 <input minlength="2" maxlength="25" type="text" required class="form-control custom-input" id="name"
-                    name="name" [(ngModel)]="medic.name" placeholder="Nom du medecin *" #name="ngModel">
+                    name="name" [(ngModel)]="newMedic.name" placeholder="Nom du medecin *" #name="ngModel">
                 <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
                     Le nom du medecin est requis
                 </div>
@@ -13,7 +13,7 @@
 
             <div class="form-group">
                 <input minlength="2" maxlength="25" type="text" required class="form-control custom-input"
-                    id="firstname" name="firstname" [(ngModel)]="medic.firstname" placeholder="Prénom du medecin *"
+                    id="firstname" name="firstname" [(ngModel)]="newMedic.firstname" placeholder="Prénom du medecin *"
                     #firstname="ngModel">
                 <div [hidden]="firstname.valid || firstname.pristine" class="alert alert-danger">
                     Le prénom du medecin est requis
@@ -22,18 +22,10 @@
 
             <div class="form-group">
                 <input minlength="1" maxlength="30" type="text" required class="form-control custom-input" id="location"
-                    name="location" [(ngModel)]="medic.location" placeholder="Ville du medecin *" #location="ngModel">
+                    name="location" [(ngModel)]="newMedic.location" placeholder="Ville du medecin *"
+                    #location="ngModel">
                 <div [hidden]="location.valid || location.pristine" class="alert alert-danger">
                     Veuillez indiquer une ville d'exercice
-                </div>
-            </div>
-
-            <div class="form-group">
-                <input maxlength="50" type="text" required class="form-control custom-input" id="specialization"
-                    name="email" [(ngModel)]="medic.specialization" placeholder="Spécialisation du medecin *"
-                    #email="ngModel">
-                <div [hidden]="specialization.valid || specialization.pristine" class="alert alert-danger">
-                    Veuillez indiquer une spécialisation pour ce medecin
                 </div>
             </div>
 
