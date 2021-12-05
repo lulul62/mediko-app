@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Meeting } from 'src/app/models/Meeting';
-
+import { Store } from '@ngxs/store';
+import { GetAllMeetings } from './meeting-list.store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-customer',
@@ -12,22 +13,15 @@ export class MeetingListComponent implements OnInit {
 
   customerList: Array<Meeting> = [];
 
-  constructor(private afs: AngularFirestore) {
-  }
+  meetingList$: Observable<Array<Meeting>>
 
-  deleteMeeting(meeting: Meeting) {
-    console.log(meeting)
-  }
-
-
-  getAllMeetings() {
-    return this.afs.collection('meeting').valueChanges().subscribe((meetings: any) => {
-      this.customerList = meetings
-    })
+  constructor(private store: Store) {
+    this.meetingList$ = this.store.select(state => state.meetingList)
   }
 
   ngOnInit(): void {
-    this.getAllMeetings()
+    this.store.dispatch(new GetAllMeetings());
+    console.log(this.meetingList$)
   }
 
 }
