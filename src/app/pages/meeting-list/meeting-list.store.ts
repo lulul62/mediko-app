@@ -26,7 +26,6 @@ export class MeetingsListState {
 
     @Action(GetAllMeetings)
     getAllMeetings(ctx: StateContext<MeetingListStateModel>) {
-        console.log('je passe action')
         const state = ctx.getState();
         this.afs.collection('meeting').valueChanges().subscribe((meetings: any) => {
             ctx.setState({

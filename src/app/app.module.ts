@@ -19,6 +19,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import { NgxsModule } from '@ngxs/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MeetingsListState } from './pages/meeting-list/meeting-list.store';
 
 
 
@@ -38,7 +39,7 @@ registerLocaleData(en);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
-    NgxsModule.forRoot([], {
+    NgxsModule.forRoot([MeetingsListState], {
       developmentMode: !environment.production
     }),
     AngularFireModule.initializeApp(environment.firebase),
