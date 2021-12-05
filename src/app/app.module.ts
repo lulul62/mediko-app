@@ -17,7 +17,7 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
-import { StoreModule } from '@ngrx/store';
+import { NgxsModule } from '@ngxs/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
@@ -38,6 +38,9 @@ registerLocaleData(en);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
+    NgxsModule.forRoot([], {
+      developmentMode: !environment.production
+    }),
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
