@@ -13,6 +13,7 @@ import MedicCommand from 'src/app/services/command/medic.command';
 export class MedicComponent {
 
   newMedic: Medic = {
+    id: '',
     name: '',
     firstname: '',
     location: '',

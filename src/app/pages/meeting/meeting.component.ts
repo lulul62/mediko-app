@@ -18,6 +18,7 @@ export class MeetingComponent {
   constructor(private meetingCommand: MeetingCommand, private meetingNotificationHelper: MeetingNotificationHelper, public auth: AuthService, public guard: LoginGuard, public authentication: AuthenticationQuery) { }
 
   meeting: Meeting = {
+    id: '',
     customer: '',
     email: '',
     date: new Date(),

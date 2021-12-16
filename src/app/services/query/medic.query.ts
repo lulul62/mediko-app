@@ -10,6 +10,6 @@ export default class MedicQuery {
     constructor(private afs: AngularFirestore) { }
 
     getAllMedics() {
-        return this.afs.collectionGroup('medics').valueChanges();
+        return this.afs.collectionGroup('medics').valueChanges({ idField: 'id' });
     }
 }

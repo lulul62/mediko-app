@@ -9,6 +9,6 @@ export default class CustomerQuery {
     constructor(private afs: AngularFirestore) { }
 
     getAllCustomers() {
-        return this.afs.collectionGroup('customers').valueChanges()
+        return this.afs.collectionGroup('customers').valueChanges({ idField: 'id' })
     }
 }

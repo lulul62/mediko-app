@@ -28,6 +28,7 @@ export class MeetingListComponent implements OnInit {
   public getAllMeetings() {
     this.meetingQuery.getAllMeetings().subscribe(meetings => {
       this.meetingList = meetings as Array<Meeting>;
+      console.log(this.meetingList)
     })
   }
 }

@@ -12,6 +12,7 @@ import CustomerNotificationHelper from '../../helpers/notifications/customer.not
 export class CustomerComponent {
 
   newCustomer: Customer = {
+    id: '',
     name: '',
     firstname: '',
     age: '',
