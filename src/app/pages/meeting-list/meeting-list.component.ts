@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import LoginGuard from 'src/app/guard/login.guard';
+import MeetingQuery from 'src/app/services/query/meeting.query';
 
 @Component({
   selector: 'app-customer',
@@ -9,7 +10,7 @@ import LoginGuard from 'src/app/guard/login.guard';
 export class MeetingListComponent implements OnInit {
 
 
-  constructor(public guard: LoginGuard) {
+  constructor(public guard: LoginGuard, public meetingQuery: MeetingQuery) {
 
   }
 
@@ -17,6 +18,7 @@ export class MeetingListComponent implements OnInit {
     this.guard.isUserConnected().subscribe((isConnected: Boolean) => {
       !isConnected ?? this.guard.redirectToLogin()
     })
+    this.meetingQuery.getAllMeetings();
   }
 
 }

@@ -5,10 +5,10 @@ import { Injectable } from '@angular/core';
     providedIn: 'root',
 })
 
-export default class MeetingQuery {
+export default class CustomerQuery {
     constructor(private afs: AngularFirestore) { }
 
     getAllMeetings() {
-        this.afs.collectionGroup('meeting').valueChanges()
+        this.afs.collectionGroup('customers').valueChanges()
     }
 }
