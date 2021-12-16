@@ -1,5 +1,6 @@
 import { AngularFirestore } from "@angular/fire/compat/firestore";
 import { Injectable } from '@angular/core';
+import { Medic } from "src/app/models/Medic";
 
 @Injectable({
     providedIn: 'root',
@@ -8,7 +9,7 @@ import { Injectable } from '@angular/core';
 export default class MedicQuery {
     constructor(private afs: AngularFirestore) { }
 
-    getAllMeetings() {
-        this.afs.collectionGroup('medics').valueChanges()
+    getAllMedics() {
+        return this.afs.collectionGroup('medics').valueChanges();
     }
 }

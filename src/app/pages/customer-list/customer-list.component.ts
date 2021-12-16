@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import LoginGuard from 'src/app/guard/login.guard';
+import CustomerQuery from 'src/app/services/query/customer.query';
 
 @Component({
   selector: 'app-customer-list',
@@ -8,7 +9,7 @@ import LoginGuard from 'src/app/guard/login.guard';
 })
 export class CustomerListComponent implements OnInit {
 
-  constructor(public guard: LoginGuard) { }
+  constructor(public guard: LoginGuard, customerQuery: CustomerQuery) { }
 
   ngOnInit(): void {
     this.guard.isUserConnected().subscribe((isConnected: Boolean) => {

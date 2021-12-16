@@ -9,6 +9,6 @@ export default class MeetingQuery {
     constructor(private afs: AngularFirestore) { }
 
     getAllMeetings() {
-        this.afs.collectionGroup('meeting').valueChanges()
+        return this.afs.collectionGroup('meeting').valueChanges()
     }
 }

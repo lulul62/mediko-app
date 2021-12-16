@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 export default class CustomerQuery {
     constructor(private afs: AngularFirestore) { }
 
-    getAllMeetings() {
+    getAllCustomers() {
         this.afs.collectionGroup('customers').valueChanges()
     }
 }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import LoginGuard from 'src/app/guard/login.guard';
+import { Meeting } from 'src/app/models/Meeting';
 import MeetingQuery from 'src/app/services/query/meeting.query';
 
 @Component({
@@ -11,14 +13,21 @@ export class MeetingListComponent implements OnInit {
 
 
   constructor(public guard: LoginGuard, public meetingQuery: MeetingQuery) {
-
   }
 
-  ngOnInit(): void {
+  meetingList: Array<Meeting> = [];
+
+  ngOnInit() {
     this.guard.isUserConnected().subscribe((isConnected: Boolean) => {
       !isConnected ?? this.guard.redirectToLogin()
     })
-    this.meetingQuery.getAllMeetings();
+    this.getAllMeetings();
   }
 
+
+  public getAllMeetings() {
+    this.meetingQuery.getAllMeetings().subscribe(meetings => {
+      this.meetingList = meetings as Array<Meeting>;
+    })
+  }
 }
