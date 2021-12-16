@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { MeetingRoutingModule } from './meeting-routing.module';
 
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  imports: [MeetingRoutingModule, NzButtonModule, NzCardModule, FormsModule],
+  imports: [CommonModule, MeetingRoutingModule, NzButtonModule, NzCardModule, FormsModule],
   declarations: [MeetingComponent],
   exports: [MeetingComponent],
   providers: [

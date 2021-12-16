@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Meeting } from 'src/app/models/Meeting';
-import { Store } from '@ngxs/store';
-import { GetAllMeetings } from './meeting-list.store';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-customer',
@@ -11,17 +9,13 @@ import { Observable } from 'rxjs';
 })
 export class MeetingListComponent implements OnInit {
 
-  customerList: Array<Meeting> = [];
 
-  meetingList$: Observable<Array<Meeting>>
+  constructor() {
 
-  constructor(private store: Store) {
-    this.meetingList$ = this.store.select(state => state.meetingList)
   }
 
   ngOnInit(): void {
-    this.store.dispatch(new GetAllMeetings());
-    console.log(this.meetingList$)
+
   }
 
 }
