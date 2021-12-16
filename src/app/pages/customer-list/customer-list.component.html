@@ -1,1 +1,31 @@
-<p>customer-list works!</p>
+<h1>Liste des patients</h1>
+<nz-table #basicTable [nzData]="customerList">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Age</th>
+            <th>Ville</th>
+            <th>Genre</th>
+            <th>Téléphone</th>
+            <th>Email</th>
+            <th>Actions</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+            <td>{{data.name}}</td>
+            <td>{{data.firstname}}</td>
+            <td>{{data.age}}</td>
+            <td>{{data.location}}</td>
+            <td>{{data.gender}}</td>
+            <td>{{data.telephone}}</td>
+            <td>{{data.email}}</td>
+            <td>
+                <a>Editer - </a>
+                <a>Supprimer</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

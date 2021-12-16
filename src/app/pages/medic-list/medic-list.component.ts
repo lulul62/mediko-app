@@ -19,7 +19,6 @@ export class MedicListComponent implements OnInit {
       !isConnected ?? this.guard.redirectToLogin();
     })
     this.getAllMedics();
-    console.log(this.medicList)
   }
 
   public getAllMedics() {

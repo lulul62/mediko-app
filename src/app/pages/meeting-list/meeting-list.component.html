@@ -1,1 +1,24 @@
-<div> </div>
+<h1>Liste des rendez-vous</h1>
+<nz-table #basicTable [nzData]="meetingList">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Email</th>
+            <th>Date du rendez vous</th>
+            <th>Raison de la visite</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+            <td>{{data.customer}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.date}}</td>
+            <td>{{data.reason}}</td>
+            <td>
+                <a>Editer - </a>
+                <a>Supprimer</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

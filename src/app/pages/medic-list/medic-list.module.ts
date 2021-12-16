@@ -7,6 +7,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { FormsModule } from '@angular/forms';
+import { NzTableModule } from 'ng-zorro-antd/table';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     NzButtonModule,
     NzCardModule,
     FormsModule,
-    MedicListRoutingModule
+    MedicListRoutingModule,
+    NzTableModule
   ]
 })
 export class MedicListModule { }

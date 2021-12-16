@@ -1,1 +1,21 @@
-<p>medic-list works!</p>
+<h1>Liste des medecins</h1>
+<nz-table #basicTable [nzData]="medicList">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Ville</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of basicTable.data">
+            <td>{{data.name}}</td>
+            <td>{{data.firstname}}</td>
+            <td>{{data.location}}</td>
+            <td>
+                <a>Editer - </a>
+                <a>Supprimer</a>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>
