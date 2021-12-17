@@ -10,10 +10,18 @@ export default class CustomerCommand {
     constructor(private angularFirestore: AngularFirestore) { }
 
     addNewCustomerToDatabase(newCustomer: Customer) {
-        return this.angularFirestore.collection('medics').add(JSON.parse(JSON.stringify(newCustomer as Customer)))
+        return this.angularFirestore.collection('customers').add(JSON.parse(JSON.stringify(newCustomer as Customer)))
             .then(success => success)
             .catch(httpError => {
                 throw new Error(`Cant add meeting ${JSON.stringify(newCustomer)} because of : ${httpError}`)
             })
+    }
+
+    deleteCustomer(customerId: string) {
+        return this.angularFirestore.collection('customers').doc(customerId).delete()
+            .then(response => {
+                return response
+            })
+            .catch(operationError => operationError);
     }
 }

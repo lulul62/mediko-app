@@ -16,4 +16,12 @@ export default class MeetingCommand {
                 throw new Error(`Cant add meeting ${JSON.stringify(newMeeting)} because of : ${httpError}`)
             })
     }
+
+    deleteMeeting(meetingId: string) {
+        return this.angularFirestore.collection('meeting').doc(meetingId).delete()
+            .then(response => {
+                return response
+            })
+            .catch(operationError => operationError);
+    }
 }

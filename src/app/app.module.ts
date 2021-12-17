@@ -37,14 +37,14 @@ registerLocaleData(en);
     IconsProviderModule,
     NzLayoutModule,
     NzMenuModule,
-    AuthModule.forRoot({
-      domain: 'dev-igbwzhxt.us.auth0.com',
-      clientId: 'Dxk0ofUGFp10gvDn89yT3S5mXXehXoUa'
-    }),
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    AuthModule.forRoot({
+      domain: 'dev-igbwzhxt.us.auth0.com',
+      clientId: 'Dxk0ofUGFp10gvDn89yT3S5mXXehXoUa'
+    }),
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

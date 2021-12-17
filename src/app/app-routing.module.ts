@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '/login' },
+  { path: '', pathMatch: 'full', redirectTo: '/meeting' },
   { path: 'meeting', loadChildren: () => import('./pages/meeting/meeting.module').then(m => m.MeetingModule) },
   { path: 'meeting-list', loadChildren: () => import('./pages/meeting-list/meeting-list.module').then(m => m.MeetingListModule) },
   { path: 'medic', loadChildren: () => import('./pages/medic/medic.module').then(m => m.MedicModule) },

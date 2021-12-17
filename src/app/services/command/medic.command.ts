@@ -16,4 +16,12 @@ export default class MedicCommand {
                 throw new Error(`Cant add meeting ${JSON.stringify(newMedic)} because of : ${httpError}`)
             })
     }
+
+    deleteMedic(medicId: string) {
+        return this.angularFirestore.collection('medics').doc(medicId).delete()
+            .then(response => {
+                return response
+            })
+            .catch(operationError => operationError);
+    }
 }
