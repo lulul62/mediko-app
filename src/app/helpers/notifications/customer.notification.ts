@@ -9,7 +9,14 @@ export default class CustomerNotificationHelper {
     addCustomerNotificationSuccess() {
         return Swal.fire(
             '',
-            'Un nouveau rendez vous à été ajouté à la liste des rendez-vous',
+            'Un nouveau patient à été ajouté à la liste des clients',
+            'success'
+        )
+    }
+    deleteNotificationSuccess() {
+        return Swal.fire(
+            '',
+            'Le patient à été supprimé avec succés',
             'success'
         )
     }

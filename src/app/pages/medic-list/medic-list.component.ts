@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import LoginGuard from 'src/app/guard/login.guard';
+import MedicNotificationHelper from 'src/app/helpers/notifications/medic.notification';
 import { Medic } from 'src/app/models/Medic';
 import MedicCommand from 'src/app/services/command/medic.command';
 import MedicQuery from 'src/app/services/query/medic.query';
@@ -11,7 +12,7 @@ import MedicQuery from 'src/app/services/query/medic.query';
 })
 export class MedicListComponent implements OnInit {
 
-  constructor(public guard: LoginGuard, public medicQuery: MedicQuery, public medicCommand: MedicCommand) { }
+  constructor(public guard: LoginGuard, public medicQuery: MedicQuery, public medicCommand: MedicCommand, public medicNotification: MedicNotificationHelper) { }
 
   medicList: Array<Medic> = [];
 
@@ -25,6 +26,7 @@ export class MedicListComponent implements OnInit {
   async deleteMedic(medicId: string): Promise<void> {
     try {
       await this.medicCommand.deleteMedic(medicId);
+      this.medicNotification.deleteNotificationSuccess();
       this.getAllMedics();
     }
     catch (operationError) {

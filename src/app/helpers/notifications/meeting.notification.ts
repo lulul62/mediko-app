@@ -14,4 +14,11 @@ export default class MeetingNotificationHelper {
             'success'
         )
     }
+    deleteNotificationSuccess() {
+        return Swal.fire(
+            '',
+            'Le rendez-vous à été supprimé avec succés',
+            'success'
+        )
+    }
 }

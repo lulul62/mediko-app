@@ -14,4 +14,11 @@ export default class MedicNotificationHelper {
             'success'
         )
     }
+    deleteNotificationSuccess() {
+        return Swal.fire(
+            '',
+            'Le medecin à été supprimé avec succés',
+            'success'
+        )
+    }
 }

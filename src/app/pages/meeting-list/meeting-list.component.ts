@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import LoginGuard from 'src/app/guard/login.guard';
+import MeetingNotificationHelper from 'src/app/helpers/notifications/meeting.notification';
 import { Meeting } from 'src/app/models/Meeting';
 import MeetingCommand from 'src/app/services/command/meeting.command';
 import MeetingQuery from 'src/app/services/query/meeting.query';
@@ -13,7 +14,7 @@ import MeetingQuery from 'src/app/services/query/meeting.query';
 export class MeetingListComponent implements OnInit {
 
 
-  constructor(public guard: LoginGuard, public meetingQuery: MeetingQuery, public meetingCommand: MeetingCommand) {
+  constructor(public guard: LoginGuard, public meetingQuery: MeetingQuery, public meetingCommand: MeetingCommand, public meetingNotification: MeetingNotificationHelper) {
   }
 
   meetingList: Array<Meeting> = [];
@@ -29,6 +30,7 @@ export class MeetingListComponent implements OnInit {
   async deleteMeeting(meetingId: string): Promise<void> {
     try {
       await this.meetingCommand.deleteMeeting(meetingId);
+      this.meetingNotification.deleteNotificationSuccess();
       this.getAllMeetings();
     }
     catch (operationError) {

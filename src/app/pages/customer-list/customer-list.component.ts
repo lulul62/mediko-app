@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import LoginGuard from 'src/app/guard/login.guard';
+import CustomerNotificationHelper from 'src/app/helpers/notifications/customer.notification';
 import { Customer } from 'src/app/models/Customer';
 import CustomerCommand from 'src/app/services/command/customer.command';
 import CustomerQuery from 'src/app/services/query/customer.query';
@@ -11,7 +12,7 @@ import CustomerQuery from 'src/app/services/query/customer.query';
 })
 export class CustomerListComponent implements OnInit {
 
-  constructor(public guard: LoginGuard, public customerQuery: CustomerQuery, public customerCommand: CustomerCommand) { }
+  constructor(public guard: LoginGuard, public customerQuery: CustomerQuery, public customerCommand: CustomerCommand, public customerNotification: CustomerNotificationHelper) { }
 
   customerList: Array<Customer> = []
 
@@ -25,6 +26,7 @@ export class CustomerListComponent implements OnInit {
   async deleteCustomer(customerId: string): Promise<void> {
     try {
       await this.customerCommand.deleteCustomer(customerId);
+      this.customerNotification.deleteNotificationSuccess();
       this.getAllCustomers();
     }
     catch (operationError) {
